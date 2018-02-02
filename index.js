@@ -2,6 +2,11 @@ module.exports = {
     extend: 'apostrophe-pieces',
     name: 'apostrophe-employee-profile',
     label: 'Employee',
+
+    moogBundle: {
+        modules: ['apostrophe-social-widgets'],
+        directory: 'lib/modules'
+      },    
     addFields: [
       {
         name: 'title',
@@ -47,7 +52,18 @@ module.exports = {
           minSize: [ 450, 450 ],
           aspectRatio: [ 1, 1 ]
         }
+      },
+      {
+        name: 'social',
+        label: 'Social Medium',
+        type: 'area',
+        options: {
+          widgets: {
+            'apostrophe-social-widgets': {}
+          }
+        }
       }
+
     ],
     construct: function(self, options) {
       self.beforeSave = function(req, piece, options, callback) {

@@ -1,6 +1,6 @@
 module.exports = {
     extend: 'apostrophe-pieces',
-    name: 'employee',
+    name: 'apostrophe-employee-profile',
     label: 'Employee',
     addFields: [
       {

@@ -32,7 +32,13 @@ module.exports = {
         label: 'Job Title',
         type: 'string',
         required: true
-      },      
+      },
+      {
+        name: 'email-address',
+        label: 'Email Address',
+        type: 'string',
+        required: true
+      },       
       {
         name: 'bio',
         label: 'Biography',
@@ -59,7 +65,7 @@ module.exports = {
         type: 'area',
         options: {
           widgets: {
-            'apostrophe-social-widgets': {}
+            'apostrophe-social': {},
           }
         }
       }

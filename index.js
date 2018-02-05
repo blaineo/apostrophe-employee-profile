@@ -81,7 +81,7 @@ module.exports = {
     construct: function(self, options) {
       self.beforeSave = function(req, piece, options, callback) {
         piece.title = piece.firstName + ' ' + piece.lastName;
-        piece.slug = piece.firstName.toLowerCase() + '-' + piece.lastName.toLowerCase();
+        piece.slug = piece.firstName.toLowerCase().replace(/[^a-zA-Z ]/g, "") + '-' + piece.lastName.toLowerCase().replace(/[^a-zA-Z ]/g, "");
         return callback();
       };
     },  

@@ -16,6 +16,13 @@ module.exports = {
         contextual: true
       },
       {
+        name: 'slug',
+        label: 'Slug',
+        type: 'string',
+        required: true,
+        contextual: true
+      },      
+      {
         name: 'firstName',
         label: 'First Name',
         type: 'string',

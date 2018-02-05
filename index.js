@@ -74,6 +74,7 @@ module.exports = {
     construct: function(self, options) {
       self.beforeSave = function(req, piece, options, callback) {
         piece.title = piece.firstName + ' ' + piece.lastName;
+        piece.slug = piece.firstName.toLowerCase() + '-' + piece.lastName.toLowerCase();
         return callback();
       };
     },  

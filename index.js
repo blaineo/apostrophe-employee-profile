@@ -65,7 +65,7 @@ module.exports = {
           minSize: [ 450, 450 ],
           aspectRatio: [ 1, 1 ]
         }
-      },
+      },     
       {
         name: 'social',
         label: 'Social Medium',

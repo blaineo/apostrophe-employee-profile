@@ -85,6 +85,9 @@ module.exports = {
         return callback();
       };
     },  
-    restApi: true
-   
+    restApi: {
+      maxPerPage: 100,
+      name: 'employees',
+      enabled: true
+    } 
 };

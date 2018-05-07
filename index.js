@@ -116,6 +116,7 @@ module.exports = {
   restApi: {
     maxPerPage: 100,
     name: 'employees',
-    enabled: true
+    enabled: true,
+    safeFilters: [ 'slug', 'published' ]
   } 
 };

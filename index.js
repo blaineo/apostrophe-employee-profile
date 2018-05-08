@@ -133,7 +133,28 @@ module.exports = {
     options.arrangeFields = _.merge([
       { name: 'basic', label: 'Basics', fields: ['title', 'published', 'env'] },
       { name: 'meta', label: 'Meta', fields: ['tags'] }
-    ], options.arrangeFields || []);    
+    ], options.arrangeFields || []); 
+    
+    options.addFilters = [
+      {
+        name: 'env',
+        choices: [
+          {
+            value: 'staging',
+            label: 'Staging'
+          },
+          {
+            value: 'prod',
+            label: 'Production'
+          },
+          {
+            value: null,
+            label: 'Both'
+          }
+        ],
+        def: null
+      }
+    ].concat(options.addFilters || []);    
   },   
   restApi: {
     maxPerPage: 100,

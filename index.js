@@ -9,6 +9,12 @@ module.exports = {
     },    
   addFields: [
     {
+      type: 'boolean',
+      name: 'published',
+      label: 'Published',
+      def:false
+    },     
+    {
       name: 'title',
       label: 'Full Name',
       type: 'string',

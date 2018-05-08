@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 module.exports = {
   extend: 'apostrophe-pieces',
   name: 'apostrophe-employee-profile',
@@ -8,12 +10,6 @@ module.exports = {
       directory: 'lib/modules'
     },    
   addFields: [
-    {
-      type: 'boolean',
-      name: 'published',
-      label: 'Published',
-      def:false
-    },     
     {
       name: 'title',
       label: 'Full Name',
@@ -109,8 +105,22 @@ module.exports = {
           'apostrophe-social': {},
         }
       }
-    }
-
+    },
+    {
+      type: 'select',
+      name: 'env',
+      label: 'Environment',
+      choices: [
+        {
+          label: 'Staging',
+          value: 'staging'           
+        },
+        {
+          label: 'Production',
+          value: 'prod'
+        }          
+      ]
+    }    
   ],
   construct: function(self, options) {
     self.beforeSave = function(req, piece, options, callback) {
@@ -118,11 +128,17 @@ module.exports = {
       piece.slug = piece.firstName.toLowerCase().replace(/[^a-zA-Z ]/g, "") + '-' + piece.lastName.toLowerCase().replace(/[^a-zA-Z ]/g, "");
       return callback();
     };
-  },  
+  }, 
+  beforeConstruct: function(self, options) {
+    options.arrangeFields = _.merge([
+      { name: 'basic', label: 'Basics', fields: ['title', 'published', 'env'] },
+      { name: 'meta', label: 'Meta', fields: ['tags'] }
+    ], options.arrangeFields || []);    
+  },   
   restApi: {
     maxPerPage: 100,
     name: 'employees',
     enabled: true,
-    safeFilters: [ 'slug', 'published' ]
+    safeFilters: [ 'slug', 'env' ]
   } 
 };

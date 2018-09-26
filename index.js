@@ -4,7 +4,6 @@ module.exports = {
   extend: 'apostrophe-pieces',
   name: 'apostrophe-employee-profile',
   label: 'Employee',
-
   moogBundle: {
       modules: ['apostrophe-social-widgets'],
       directory: 'lib/modules'
@@ -69,33 +68,15 @@ module.exports = {
       }
     }, 
     {
-      type: 'select',
+      type: 'boolean',
       name: 'founder',
-      label: 'Founder',
-      choices: [
-        {
-          label: 'No',
-          value: 'false'           
-        },
-        {
-          label: 'Yes',
-          value: 'true',
-          showFields: [
-            'profileImage'
-          ]
-        }          
-      ]
-    },     
+      label: 'Founder'
+    },
     {
-      name: 'profileImage',
-      label: 'Profile Image',
-      type: 'singleton',
-      widgetType: 'apostrophe-images',
-      options: {
-        limit: 1,
-        minSize: [ 450, 450 ]
-      }
-    },         
+      type: 'boolean',
+      name: 'partner',
+      label: 'Partner'
+    },    
     {
       name: 'social',
       label: 'Social Medium',
@@ -126,8 +107,10 @@ module.exports = {
     self.beforeSave = function(req, piece, options, callback) {
       piece.title = piece.firstName + ' ' + piece.lastName;
       piece.slug = piece.firstName.toLowerCase().replace(/[^a-zA-Z ]/g, "") + '-' + piece.lastName.toLowerCase().replace(/[^a-zA-Z ]/g, "");
+
       return callback();
     };
+  
   }, 
   beforeConstruct: function(self, options) {
     options.arrangeFields = _.merge([
